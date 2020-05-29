@@ -1,0 +1,20 @@
+name: RenameBlacklist
+version: ${project.version}
+main: ham.renameblacklist.RenameBlacklist
+api-version: 1.13
+authors: [Ryxian]
+description: A custom plugin for Ham Factions that blocks blacklisted words and phrases
+loadbefore: [Essentials]
+commands:
+    itemname:
+        usage: /<command>
+        aliases: [itemrename, irename, iname]
+        description: edit an items name
+        permission: renameblacklist.itemrename
+permissions:
+    renameblacklist.coloredanvils:
+        default: false
+        description: allows for color codes in anvil
+    renameblacklist.itemrename:
+        default: false
+        description: allows for color codes in command
