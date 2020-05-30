@@ -33,7 +33,7 @@ public class MyCommand implements CommandExecutor {
                         str += " ";
                     }
                     str = str.trim();
-                    if (!plugin.blacklist.contains(str)) {
+                    if (!plugin.blacklist.contains(str.toLowerCase())) {
                         str = ChatColor.translateAlternateColorCodes('&', str);
                     }
                     name = str;

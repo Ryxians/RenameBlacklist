@@ -26,7 +26,7 @@ public final class RenameBlacklist extends JavaPlugin {
         saveDefaultConfig();
 
         blacklist = config.getStringList("Blacklist");
-        System.out.println(blacklist.get(0));
+        blacklist.forEach(i -> blacklist.set(blacklist.indexOf(i), i.toLowerCase()));
         instance = this;
 
         getServer().getPluginManager().registerEvents(new Listener(), this);
