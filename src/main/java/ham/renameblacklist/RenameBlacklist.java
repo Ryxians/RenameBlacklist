@@ -18,6 +18,8 @@ public final class RenameBlacklist extends JavaPlugin {
 
     public List<String> blacklist;
 
+    public String ignored;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -25,8 +27,11 @@ public final class RenameBlacklist extends JavaPlugin {
         config.options().copyDefaults(true);
         saveDefaultConfig();
 
+        ignored = "[" + config.getString("Ignored") + "]";
+
         blacklist = config.getStringList("Blacklist");
-        blacklist.forEach(i -> blacklist.set(blacklist.indexOf(i), i.toLowerCase().replaceAll("[ _]", "")));
+
+        blacklist.forEach(i -> blacklist.set(blacklist.indexOf(i), ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', i.toLowerCase().replaceAll(ignored, "")))));
         instance = this;
 
         getServer().getPluginManager().registerEvents(new Listener(), this);
