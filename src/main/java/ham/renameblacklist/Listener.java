@@ -14,7 +14,8 @@ public class Listener implements org.bukkit.event.Listener {
     @EventHandler
     public void colorAnvil(PrepareAnvilEvent evt){
         String str = evt.getInventory().getRenameText();
-        if (!instance.blacklist.contains(str.toLowerCase()) && evt.getView().getPlayer().hasPermission("renameblacklist.coloredanvils")) {
+        String temp = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', str)).replaceAll("[ _]", "");
+        if (!instance.blacklist.contains(temp.toLowerCase()) && evt.getView().getPlayer().hasPermission("renameblacklist.coloredanvils")) {
             String stv = ChatColor.translateAlternateColorCodes('&', str);
             try {
                 ItemStack result = evt.getResult();
